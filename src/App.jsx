@@ -1,8 +1,20 @@
-import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import IniciarSesion from './layout/IniciarSesion'
+import Layout from './layout/Layout'
+import Inicio from './paginas/Inicio'
 
 const App = () => {
   return (
-    <div className='text-5xl text-red-600'>App</div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<IniciarSesion />}>
+        </Route>
+
+        <Route path='/clientes' element={<Layout />}>
+          <Route element={Inicio} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
