@@ -1,8 +1,11 @@
 import { Formik, Form, Field } from 'formik'
+import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import Alerta from './Alerta'
 
 const Formulario = () => {
+  const navigate = useNavigate()
+
   const nuevoClienteSchema = Yup.object().shape({
     nombre: Yup.string()
       .min(3, 'Nombre muy corto')
@@ -22,8 +25,22 @@ const Formulario = () => {
       .typeError('Numero invalido')
   })
 
-  const handleSubmit = (valores) => {
-    console.log(valores)
+  const handleSubmit = async (valores) => {
+    try {
+      const url = 'http://localhost:3001/clientes'
+      const respuesta = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(valores),
+        headers: {
+          'Content-type': 'application/json'
+        }
+      })
+      const resultado = await respuesta.json()
+      console.log(resultado)
+      navigate('/clientes')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -39,8 +56,9 @@ const Formulario = () => {
             telefono: '',
             notas: ''
           }}
-          onSubmit={(values) => {
-            handleSubmit(values)
+          onSubmit={async (values, { resetForm }) => {
+            await handleSubmit(values)
+            resetForm()
           }}
           validationSchema={nuevoClienteSchema}
         >
@@ -146,7 +164,7 @@ const Formulario = () => {
                     <input
                     type='submit'
                     value='Agregar'
-                    className='mt-5 w-full bg-blue-600 uppercase font-bold text-white text-lg p-3 rounded-md'
+                    className='hover:cursor-pointer hover:bg-blue-600 mt-5 w-full bg-blue-500 uppercase font-bold text-white text-lg p-3 rounded-md'
                     />
                 </Form>
               )
