@@ -1,20 +1,12 @@
 {
   "clientes": [
     {
-      "nombre": "Juan",
-      "empresa": "Ferreteria",
-      "email": "a@gmail.com",
-      "telefono": "32432",
-      "notas": "Nada notas",
+      "nombre": "Juan Carlos",
+      "empresa": "Ferreteria Carlitos",
+      "email": "juan@gmail.com",
+      "telefono": "352 321 4343",
+      "notas": "Nota de ejemplo",
       "id": 1
-    },
-    {
-      "nombre": "Pedro",
-      "empresa": "Papeleria",
-      "email": "b@gmail.com",
-      "telefono": "32432",
-      "notas": "caca",
-      "id": 2
     },
     {
       "nombre": "Javier",
@@ -23,6 +15,14 @@
       "telefono": "243",
       "notas": "",
       "id": 3
+    },
+    {
+      "nombre": "Brenda",
+      "empresa": "Cerrajeria",
+      "email": "d@gmail.com",
+      "telefono": "32323232",
+      "notas": "",
+      "id": 4
     }
   ]
 }
