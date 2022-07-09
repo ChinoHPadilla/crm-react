@@ -15,12 +15,11 @@ const Inicio = () => {
       }
     }
     obtenerClientesAPI()
-    console.log(clientes)
   }, [])
 
   return (
     <>
-      <h1 className="font-black text-4xl text-blue-600">Cliente</h1>
+      <h1 className="font-black text-4xl text-blue-600">Clientes</h1>
       <p className="mt-2 text-xl">Administra tus clientes</p>
       <table className='w-full mt-5 table-auto shadow-md bg-white'>
         <thead className='bg-blue-600 text-white'>

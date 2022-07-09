@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import Spinner from '../components/Spinner'
 
 const VerCliente = () => {
   const { id } = useParams()
   const [cliente, setCliente] = useState({})
+  const [cargando, setCargando] = useState(true)
   const { nombre, empresa, telefono, email, notas } = cliente
 
   useEffect(() => {
@@ -16,41 +18,57 @@ const VerCliente = () => {
       } catch (error) {
         console.log(error)
       }
+      setCargando(!cargando)
     }
     obtenerClienteAPI()
   }, [])
 
   return (
-    <div>
-        <h1 className="font-black text-4xl text-blue-600">Información ID: {id}</h1>
+    cargando
+      ? <Spinner />
+      : Object.keys(cliente).length === 0
+        ? <h1 className="font-black text-4xl text-blue-600">No hay resultados</h1>
+        : (
+            <div>
+                <h1 className="font-black text-4xl text-blue-600">Información ID: {id}</h1>
 
-        <p className='text-3xl text-gray-600 mt-5'>
-            <span className='text-gray-700 uppercase font-bold'>Cliente: </span>
-            {nombre}
-        </p>
-        <p className='text-3xl text-gray-600 mt-2'>
-            <span className='text-gray-700 uppercase font-bold'>Empresa: </span>
-            {empresa}
-        </p>
-        <p className='text-3xl text-gray-600 mt-2'>
-            <span className='text-gray-700 uppercase font-bold'>Email: </span>
-            {email}
-        </p>
+                {nombre && (
+                    <p className='text-3xl text-gray-600 mt-5'>
+                        <span className='text-gray-700 uppercase font-bold'>Cliente: </span>
+                        {nombre}
+                    </p>
+                )}
 
-        {notas && (
-            <p className='text-3xl text-gray-600 mt-2'>
-                <span className='text-gray-700 uppercase font-bold'>Telefono: </span>
-                {telefono}
-            </p>
-        )}
-        {notas && (
-            <p className='text-3xl text-gray-600 mt-2'>
-                <span className='text-gray-700 uppercase font-bold'>Notas: </span>
-                {notas}
-            </p>
-        )}
+                {empresa && (
+                    <p className='text-3xl text-gray-600 mt-2'>
+                        <span className='text-gray-700 uppercase font-bold'>Empresa: </span>
+                        {empresa}
+                    </p>
+                )}
 
-    </div>
+                {email && (
+                    <p className='text-3xl text-gray-600 mt-2'>
+                        <span className='text-gray-700 uppercase font-bold'>Email: </span>
+                        {email}
+                    </p>
+                )}
+
+                {telefono && (
+                    <p className='text-3xl text-gray-600 mt-2'>
+                        <span className='text-gray-700 uppercase font-bold'>Telefono: </span>
+                        {telefono}
+                    </p>
+                )}
+
+                {notas && (
+                    <p className='text-3xl text-gray-600 mt-2'>
+                        <span className='text-gray-700 uppercase font-bold'>Notas: </span>
+                        {notas}
+                    </p>
+                )}
+            </div>
+          )
+
   )
 }
 

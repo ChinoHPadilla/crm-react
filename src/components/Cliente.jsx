@@ -20,7 +20,7 @@ const Cliente = ({ cliente }) => {
 
                 <button
                   type='button'
-                  onClick={() => navigate(`/clientes/${id}`)}
+                  onClick={() => navigate(`/clientes/editar/${id}`)}
                   className='hover:cursor-pointer hover:bg-blue-600 hover:text-white transition-all w-full uppercase font-bold text-blue-600 text-sm p-2 rounded-md border-2 hover:shadow-md mb-1'
                 >Editar</button>
 

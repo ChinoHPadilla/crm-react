@@ -11,11 +11,11 @@ const Layout = () => {
         <nav className='mt-10'>
           <Link
             to="/clientes"
-            className={`${urlActual === '/clientes' ? 'text-white border-l-4 pl-2' : 'text-black'}  text-2xl block mb-2 font-semibold hover:text-white hover:pl-2`}
+            className={`${urlActual === '/clientes' ? 'text-white border-l-4 pl-2' : 'text-black'}  p-2 text-2xl block mb-2 font-bold hover:text-white hover:pl-2`}
           >Clientes</Link>
           <Link
             to="/clientes/nuevo"
-            className={`${urlActual === '/clientes/nuevo' ? 'text-white border-l-4 pl-2' : 'text-black'}  text-2xl block mb-2 font-semibold hover:text-white hover:pl-2`}
+            className={`${urlActual === '/clientes/nuevo' ? 'text-white border-l-4 pl-2' : 'text-black'}  p-2 text-2xl block mb-2 font-bold hover:text-white hover:pl-2`}
           >Nuevo Cliente</Link>
         </nav>
       </div>
